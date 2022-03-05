@@ -1,6 +1,6 @@
 import { Outlet } from "remix"
 
-export default function Blog() {
+export default function BlogsRoute() {
     return (
         <div>
             <h1>Blogs</h1>
