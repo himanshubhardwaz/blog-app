@@ -12,9 +12,12 @@ datasource db {
 
 model User {
   id       Int    @id @default(autoincrement())
+  name     String
   username String @unique
   password String
   Blog     Blog[]
+
+  @@unique([id, name], name: "sqlite_autoindex_user_1")
 }
 
 model Blog {
@@ -22,7 +25,8 @@ model Blog {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
   user_id   Int
+  user_name String
   title     String
   content   String
-  User      User?    @relation(fields: [user_id], references: [id])
+  User      User?    @relation(fields: [user_id, user_name], references: [id, name])
 }
