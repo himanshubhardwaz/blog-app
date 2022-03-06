@@ -4,12 +4,14 @@ const db = new PrismaClient();
 async function seed() {
     await Promise.all(
         getUsers().map(user => {
-            return db.user.create({ data: user })
+            return db.user.create({
+                data: user, include: { Blog: true, }
+            })
         })
     )
     await Promise.all(
         getBlogs().map((blog) => {
-            return db.blog.create({ data: blog });
+            return db.blog.create({ data: blog, include: { User: true } });
         })
     )
 }
