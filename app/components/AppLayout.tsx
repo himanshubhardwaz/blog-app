@@ -4,7 +4,9 @@ export default function AppLayout({ children }: any) {
     return (
         <>
             <Header />
-            {children}
+            <div className="max-w-96">
+                {children}
+            </div>
         </>
     )
 }
