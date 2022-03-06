@@ -1,5 +1,5 @@
 export default function Blogs() {
     return (
-        <h1 className="text-xl text-blue-500">Hello</h1>
+        <p className="text-xl text-blue-500 font-semibold">Hello</p>
     )
 }
