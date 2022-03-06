@@ -1,5 +1,5 @@
 import { Outlet, } from "remix"
-import AppLayout from "~/components/AppLayout"
+import AppLayout from "~/components/layout-components/AppLayout"
 
 export default function BlogsRoute() {
     return (

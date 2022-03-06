@@ -1,4 +1,4 @@
-import AppLayout from "~/components/AppLayout";
+import AppLayout from "~/components/layout-components/AppLayout";
 
 export default function AboutRoute() {
     return (

@@ -1,6 +1,6 @@
 import { Blog } from "@prisma/client";
 import { LoaderFunction, useLoaderData } from "remix"
-import BlogWrapper from "~/components/BlogWrapper"
+import BlogCard from "~/components/BlogCard"
 import { db } from "~/utils/db.server"
 import { marked } from 'marked';
 
@@ -23,7 +23,7 @@ export default function BlogsIndexRoute() {
             <main className="lg:px-32">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {blogs.map((blog, index) =>
-                        <BlogWrapper blog={blog} key={index} />
+                        <BlogCard blog={blog} key={index} />
                     )}
                 </div>
             </main>
