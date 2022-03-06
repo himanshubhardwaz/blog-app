@@ -11,13 +11,13 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  username String @unique
+  id       Int     @id @default(autoincrement())
+  name     String?
+  username String  @unique
   password String
   Blog     Blog[]
 
-  @@unique([id, name], name: "sqlite_autoindex_user_1")
+  @@unique([id, name], name: "sqlite_autoindex_User_1")
 }
 
 model Blog {

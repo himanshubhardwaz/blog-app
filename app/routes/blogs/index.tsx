@@ -1,5 +1,33 @@
+import { Blog } from "@prisma/client";
+import { LoaderFunction, useLoaderData } from "remix"
+import BlogCard from "~/components/BlogCard"
+import { db } from "~/utils/db.server"
+import { marked } from 'marked';
+
+type LoaderData = { blogs: Array<Blog> }
+export let loader: LoaderFunction = async () => {
+    let blogs = await db.blog.findMany();
+    let data: LoaderData = { blogs };
+    blogs.forEach((blog: Blog) => {
+        blog.content = marked(blog.content);
+    })
+    return data
+}
+
 export default function BlogsIndexRoute() {
+    let { blogs } = useLoaderData<LoaderData>();
+
     return (
-        <h2>Default blog index route</h2>
+        <>
+            <h1 className="text-3xl border-b-4 p-5 font-bold">Blogs</h1>
+            <main className="lg:px-32">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {blogs.map((blog, index) =>
+                        <BlogCard blog={blog} key={index} />
+                    )}
+                </div>
+            </main>
+
+        </>
     )
 }
